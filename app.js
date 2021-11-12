@@ -2,6 +2,7 @@
 
 const express = require('express');
 const cors = require('cors');
+const mongoose = require('mongoose');
 
 const config = require('./config/default.json');
 
@@ -34,9 +35,18 @@ server.listen(config.PORT, () => {
   console.log(`
       ##############################################
                     🍺 ${'PORT:::' + config.PORT} 🍺
-      ##############################################
       `);
 });
+
+/*
+Database Connection
+*/
+mongoose.connect(config.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true }).then(
+  (db) => console.log(`
+                    🍺 MONGODB CONNECTED 🍺
+    ##############################################`),
+  (err) => console.log("MongoDB " + String(err.message))
+);
 
 /* TEST API */
 app.use('/test', async(req, res, next) => {
