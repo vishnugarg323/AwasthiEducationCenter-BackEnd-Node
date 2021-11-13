@@ -18,6 +18,10 @@ const userModel = new Schema({
     type: String,
     default: null
   },
+  transactionId: {
+    type: String,
+    default: null
+  },
   isActive: {
     type: Boolean,
     default: false

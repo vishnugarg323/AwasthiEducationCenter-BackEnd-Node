@@ -8,6 +8,7 @@ const config = require('./config/default.json');
 
 const app = express();
 app.use(cors());
+app.use(express.json())
 app.options('*', cors());
 
 // All api requests
